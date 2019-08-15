@@ -1,0 +1,41 @@
+﻿@page
+@model b2c_poc.Pages.ClaimsModel
+@using Microsoft.AspNetCore.Identity
+@{
+    ViewData["Title"] = "Claims";
+}
+
+<h1>Claims</h1>
+
+@if (User.Identity.IsAuthenticated)
+{ 
+<table border="1">
+    <thead>
+        <tr>
+            <td>Claim Type</td>
+            <td>Claim Value</td>
+        </tr>
+    </thead>    
+    <tbody>
+        @foreach (var claim in User.Claims)
+        {
+            <tr>
+                <td>
+                    @claim.Type
+                </td>
+                <td>
+                    @claim.Value
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+}else
+{
+<p>
+    Not Auth
+</p>
+}
+
+
+
